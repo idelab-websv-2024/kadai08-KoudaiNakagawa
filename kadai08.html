@@ -15,12 +15,18 @@
             oneline.innerHTML += r["artistName"];
             oneline.innerHTML += "<hr />";
             output.appendChild(oneline);
+            
+            var pict = document.createElement('img');
+            pict.src = r["artworkUrl100"]; 
+            pict.innerHTML += "<hr />"
+            output.appendChild(pict);
+
         }
     }
 
     function startRequest() {
         var statusField = document.getElementById('status');
-        var s = '手嶌';
+        var s = document.getElementById('searchWord').value;
         alert(s);
         var searchString = encodeURIComponent(s);
         alert(searchString);
@@ -36,12 +42,15 @@
   
   <body>
 
-<div id='status'></div>
-<div id='outputArea'></div>
-<input type='button' id='searchWord' value='検索' onclick="startRequest()"/>
+    <div id='status'></div>
+    <div id='outputArea'></div>
 
+    <form action="" method="get">
+      <input type="text" id="searchWord">
+      <input type='button' id='startSearch' value='検索' onclick="startRequest()">
+    </form>
 
-<script id='caller'></script>
+    <script id='caller'></script>
 
   </body>
 </html>
